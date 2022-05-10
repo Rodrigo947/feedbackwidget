@@ -1,2 +1,2 @@
 # feedbackwidget
-32min
+50min
