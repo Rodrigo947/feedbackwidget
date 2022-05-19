@@ -1,5 +1,13 @@
-const server = 1
+import express from 'express';
 
-async function teste(){
-   return 'ok';
-}
+const app = express();
+
+const PORT = 3333;
+
+app.get('/users', (req, res) => {
+  return res.send('Hello World')
+})
+
+app.listen(PORT, ()=>{
+  console.log(`HTTP server running on port ${PORT}`)
+});
