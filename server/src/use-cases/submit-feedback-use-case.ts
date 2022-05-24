@@ -15,6 +15,18 @@ export class SubmitFeedbackUseCase {
 
     await this.feedbacksRepository.create({ type, comment, screenshot });
 
+    if(!type){
+      throw new Error('Type is required.')
+    }
+
+    if(!comment){
+      throw new Error('Type is comment.')
+    }
+
+    if(screenshot && !screenshot.startsWith('data:image/png;base64')){
+      throw new Error('Invalid screenshot format.')
+    }
+
     await this.mailAdapter.sendMail({
       subject: 'Novo feedback',
       body: [
