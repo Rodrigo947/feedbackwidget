@@ -9,6 +9,7 @@ import { styles } from "./styles";
 import { theme } from "../../theme";
 
 import { feedbackTypes } from "../../utils/feedbackTypes";
+import { Button } from "../Button";
 
 interface Props {
   feedbackType: FeedbackType;
@@ -44,8 +45,9 @@ export function Form({ feedbackType }: Props) {
         <ScreenshotButton
           onTakeShot={() => {}}
           onRemoveShot={() => {}}
-          screenshot=""
+          screenshot="https://github.com/MatFregulia.png"
         />
+        <Button isLoading={false} />
       </View>
     </View>
   );
