@@ -25,8 +25,6 @@ export function ScreenshotButton({
   }
 
   if (screenshot) {
-    console.log(screenshot);
-
     return (
       <button
         type="button"

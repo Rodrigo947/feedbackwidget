@@ -14,6 +14,8 @@ import { feedbackTypes } from "../../utils/feedbackTypes";
 import { Button } from "../Button";
 import { api } from "../../libs/api";
 
+import * as FileSystem from "expo-file-system";
+
 interface Props {
   feedbackType: FeedbackType;
   onFeedbackSent: () => void;
@@ -50,11 +52,14 @@ export function Form({
     }
 
     setIsSendingFeedback(true);
+    const screenshotBase64 =
+      screenshot &&
+      (await FileSystem.readAsStringAsync(screenshot, { encoding: "base64" }));
 
     try {
       await api.post("/feedbacks", {
         type: feedbackType,
-        screenshot,
+        screenshot: `data:image/png;base64,${screenshotBase64}`,
         comment,
       });
       onFeedbackSent();
